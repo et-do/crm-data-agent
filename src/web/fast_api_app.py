@@ -453,9 +453,7 @@ def get_fast_api_app(
         """Returns the root agent for the given app."""
         if app_name in root_agent_dict:
             return root_agent_dict[app_name]
-        agent_module_name = str(
-            Path(agent_dir).relative_to(os.getcwd())
-        ).replace("/", ".")
+        agent_module_name = ".".join(Path(agent_dir).relative_to(os.getcwd()).parts)
         agent_module = importlib.import_module(agent_module_name)
         if getattr(agent_module.agent, "root_agent"):
             root_agent = agent_module.agent.root_agent

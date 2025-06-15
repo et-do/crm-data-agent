@@ -106,7 +106,7 @@ class FastAPIEngineRuntime(AgentRuntime):
                  server_url: Optional[str] = None ):
         super().__init__(session)
         if not server_url:
-            server_url = "http://127.0.0.1:8000"
+            server_url = "http://127.0.0.1:8080"
         self.server_url = server_url
         self.streaming = False
         self.connection = None
