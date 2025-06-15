@@ -14,9 +14,9 @@
 # limitations under the License.
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-VENV_PYTHON="$SCRIPT_DIR/.venv/Scripts/python.exe"
-VENV_UVICORN="$SCRIPT_DIR/.venv/Scripts/uvicorn.exe"
+PYTHON=python3
+UVICORN=uvicorn
 
 pushd "${SCRIPT_DIR}/src" &> /dev/null || exit
-"$VENV_UVICORN" --app-dir web fast_api_runner:api_app --port 8080 & "$VENV_PYTHON" web/main.py "agents/data_agent" "local" & wait
+"$UVICORN" --app-dir web fast_api_runner:api_app --port 8000 & "$PYTHON" web/main.py "agents/data_agent" "local" & wait
 popd &> /dev/null || exit
